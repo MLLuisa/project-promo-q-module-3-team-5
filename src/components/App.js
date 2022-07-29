@@ -61,8 +61,11 @@ const uploadImage = (ev) => {
       email: '',
       linkedin: '',
       github: '',
-      photo: ''
+      photo: photo
     })
+  }
+  const handleCollapsed = (ev) => {
+    console.log(ev.currentTarget);
   }
 
   return (
@@ -117,7 +120,7 @@ const uploadImage = (ev) => {
         </section>
         <section className="design-profile">
           <form action="https://adalab-server-form.herokuapp.com" method="post" className="form js-allInputs">
-            <fieldset className="design-section collapsablemenu">
+            <fieldset className="design-section collapsablemenu" onClick={handleCollapsed}>
               <legend className="legend-design js-legend">
                 <i className="icon fa-regular fa-object-ungroup"></i>
                 <span className="fill">Diseña</span>
@@ -173,7 +176,7 @@ const uploadImage = (ev) => {
                 </div>
               </section>
             </fieldset>
-            <fieldset className="fill-section collapsablemenu">
+            <fieldset className="fill-section collapsablemenu" onClick={handleCollapsed}>
               <legend className="legend-fill js-legend">
                 <i className="fa-solid fa-xl fa-keyboard"></i>
                 <span className="fill">rellena</span>
@@ -228,7 +231,7 @@ const uploadImage = (ev) => {
               </div>
             </fieldset>
 
-            <fieldset className="share-section collapsablemenu">
+            <fieldset className="share-section collapsablemenu" onClick={handleCollapsed}>
               <legend className="legend-share js-legend">
                 <i className="icon fa-solid fa-share-nodes fa-xl"></i>
                 <p className="share">comparte</p>
