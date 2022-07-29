@@ -9,11 +9,6 @@ import PropTypes from 'prop-types';
 
 
 function App() {
-  const [avatar, setAvatar] = useState('');
-  const updatePhoto = (avatar) => {
-    setAvatar(avatar = props.avatar === '' ? { photo } : props.avatar);
-  }
-
   const [dataCard, setDataCard] = useState({
     palette: '1',
     name: '',
@@ -24,35 +19,29 @@ function App() {
     github: '',
     photo: ''
   });
-
-  function GetPhoto(props) {
-    const fr = new FileReader();
-
-
-    const myFileField = React.createRef();
-
-    const uploadImage = (ev) => {
-
-      if (ev.currentTarget.files.length > 0) {
-
-        const myFile = ev.currentTarget.files[0];
-
-        fr.addEventListener('load', getImage);
-
-        fr.readAsDataURL(myFile);
-      }
-    };
-  }
-  const getImage = () => {
-    setDataCard({
-      ...dataCard,
-      photo: fr.result
-    })
-
-    props.updatePhoto(dataCard.photo);
+  
+  
+  if (dataCard.photo === '') {
+    setDataCard({...dataCard,
+      photo: photo});
   };
+ 
+const fr = new FileReader();
+const myFileField = React.createRef();
 
+const getImage = () => {
+  setDataCard({...dataCard,
+    photo: fr.result});
 
+};
+
+const uploadImage = (ev) => {
+  if (ev.currentTarget.files.length > 0) {
+    const myFile = ev.currentTarget.files[0];
+    fr.addEventListener('load', getImage);
+    fr.readAsDataURL(myFile);
+  }
+};
 
   const handleInput = (ev) => {
     const inputValue = ev.target.value;
@@ -62,10 +51,19 @@ function App() {
     });
   }
 
-  GetPhoto.propTypes = {
-    avatar: PropTypes.string.isRequired,
-    updatePhoto: PropTypes.func.isRequired,
-  };
+  const handleReset = (ev) => {
+    ev.preventDefault();
+    setDataCard({
+      palette: '1',
+      name: '',
+      job: '',
+      phone: '',
+      email: '',
+      linkedin: '',
+      github: '',
+      photo: ''
+    })
+  }
 
   return (
     <div>
@@ -80,7 +78,7 @@ function App() {
 
 
         <section className="preview">
-          <button className="reset-button js-resetBtn">
+          <button className="reset-button js-resetBtn" onClick={handleReset}>
             <i className="fa-regular fa-trash-can"></i>
             Reset
           </button>
@@ -92,7 +90,7 @@ function App() {
               <p className="developer js-preview-job">{dataCard.job || 'Front-end developer'}</p>
             </selection>
 
-            <img className="photo js-preview-photo" src={photo} alt="profile" />
+            <img className="photo js-preview-photo" src={dataCard.photo} alt="profile" />
             <ul className="icons">
               <li>
                 <a className="icon-phone icon-border js-preview-phone card-links" title="Teléfono" href={'tel:' + dataCard.phone}>
@@ -204,7 +202,7 @@ function App() {
                       onChange={uploadImage}
                       id="image" className="image__hiddenField js__profile-upload-btn js-img-input" required="" />
                   </div>
-                  <div style={{ backgroundImage: `url(${avatar})` }} className="profile__preview js__profile-image"></div>
+                  <div className="profile__preview js__profile-image" style={{ backgroundImage: `url(${dataCard.photo})` }}></div>
                 </div>
 
                 <label htmlFor="email" className="text-fill">email</label>
