@@ -64,7 +64,9 @@ const uploadImage = (ev) => {
       photo: photo
     })
   }
+  //Para los colapsables
   const handleCollapsed = (ev) => {
+    
     console.log(ev.currentTarget);
   }
 
