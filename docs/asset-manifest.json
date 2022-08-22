@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "./static/css/main.29376270.css",
+    "main.js": "./static/js/main.65f2989f.js",
+    "static/media/photo2.png": "./static/media/photo2.bc62ace941fec61297c9.png",
+    "static/media/scream-team-04.png": "./static/media/scream-team-04.5c5cf4fb776b6fe9005a.png",
+    "index.html": "./index.html",
+    "main.29376270.css.map": "./static/css/main.29376270.css.map",
+    "main.65f2989f.js.map": "./static/js/main.65f2989f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.29376270.css",
+    "static/js/main.65f2989f.js"
+  ]
+}
