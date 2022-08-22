@@ -8,10 +8,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Preview from './Preview';
 import dataApi from '../services/dataApi';
+import ls from '../services/localStoraged';
 
 
 function App() {
-  const [dataCard, setDataCard] = useState({
+  const [dataCard, setDataCard] = useState(ls.get('data', {
     palette: '1',
     name: '',
     job: '',
@@ -20,7 +21,7 @@ function App() {
     linkedin: '',
     github: '',
     photo: ''
-  });
+  }));
   const [resultCard, setResultCard] = useState({});
   
   if (dataCard.photo === '') {
@@ -66,6 +67,8 @@ const uploadImage = (ev) => {
     
     console.log(ev.currentTarget);
   }
+
+  ls.set('data', dataCard);
 
   return (
     <div>
@@ -215,7 +218,7 @@ const uploadImage = (ev) => {
                 <div className="created">
                   <h3 className="share-text">{resultCard.success === true ? "La tarjeta ha sido creada:" : "¡Rellena todo el formulario!"}</h3>
                   <a className="link" href={resultCard.cardURL} target="_blank">{resultCard.success === true ? resultCard.cardURL : ""}</a>
-                  <a className="button-share" href="#" target="_blank">
+                  <a className="button-share" href={`https://twitter.com/intent/tweet?text=Hello%20world%20mi%20tarjeta&url=${resultCard.cardURL}`} target="_blank">
                     <i className="fa-solid fa-address-card"></i>
                     <span> Compartir en twitter</span>
                   </a>
