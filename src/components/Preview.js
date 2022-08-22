@@ -1,4 +1,5 @@
 import photo from '../images/photo2.png';
+import '../styles/layout/preview.scss';
 
 function Preview (props) {
     

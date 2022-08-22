@@ -1,15 +1,19 @@
-import logo from '../images/scream-team-04.png';
 import photo from '../images/photo2.png';
 import knife from '../images/knife.png';
-import logoAdalab from '../images/logo-adalab.png';
-import '../styles/App.scss';
 import { useState } from 'react';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Preview from './Preview';
 import dataApi from '../services/dataApi';
 import ls from '../services/localStoraged';
-
+import Header from './Header';
+import Footer from './Footer';
+import '../styles/core/Reset.scss';
+import '../styles/layout/main-profile.scss';
+import '../styles/layout/main-home.scss';
+import '../styles/layout/design.scss';
+import '../styles/layout/fill.scss';
+import '../styles/layout/share.scss';
 
 function App() {
   const [dataCard, setDataCard] = useState(ls.get('data', {
@@ -72,11 +76,7 @@ const uploadImage = (ev) => {
 
   return (
     <div>
-      <header className="header__profile">
-        <a className="header__profile__link" href="./index.html" title="Volver a la página principal">
-          <img className="header__profile__logo" src={logo} alt="Logo Awesome Profile Cards" title="Logo Awesome Profile Cards" />
-        </a>
-      </header>
+      <Header />
 
 
       <main className="main-profile">
@@ -230,10 +230,7 @@ const uploadImage = (ev) => {
 
         </section>
       </main>
-      <footer className="footer">
-        <p className="footer__copyright">ScreamTeam profile-cards @2022</p>
-        <img className="footer__logo" src={logoAdalab} alt="Logo Adalab" title="Logo Adalab" />
-      </footer>
+      <Footer />
     </div>
   );
 }
