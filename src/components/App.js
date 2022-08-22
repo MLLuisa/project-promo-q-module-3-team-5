@@ -7,6 +7,7 @@ import { useState } from 'react';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Preview from './Preview';
+import dataApi from '../services/dataApi';
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
     github: '',
     photo: ''
   });
-  
+  const [resultCard, setResultCard] = useState({});
   
   if (dataCard.photo === '') {
     setDataCard({...dataCard,
@@ -52,6 +53,13 @@ const uploadImage = (ev) => {
     });
   }
 
+  // Crear tarjeta (API)
+  const handleCreateCard = (ev) => {
+    ev.preventDefault();
+    dataApi(dataCard).then(info => {
+      setResultCard(info);
+    })
+  }
   
   //Para los colapsables
   const handleCollapsed = (ev) => {
@@ -194,19 +202,19 @@ const uploadImage = (ev) => {
 
               <div className="container-collapsible section-to-hide ">
                 <div className="button-container">
-                  <button className="button-create" name="newCardButton">
+                  <button className="button-create" name="newCardButton" onClick={handleCreateCard}>
                     <i className="fa-solid fa-address-card"></i>
                     <span>crear tarjeta</span>
                   </button>
                 </div>
 
                 <div className="check">
-                  <h3 className="share-text">¡Rellena todo el formulario!</h3>
+                  <h3 className="share-text"></h3>
                 </div>
 
-                <div className="created collapsed">
-                  <h3 className="share-text">la tarjeta ha sido creada:</h3>
-                  <a className="link" href="#" target="_blank">https://awesome-profile-card.com?id=A456DF0001</a>
+                <div className="created">
+                  <h3 className="share-text">{resultCard.success === true ? "La tarjeta ha sido creada:" : "¡Rellena todo el formulario!"}</h3>
+                  <a className="link" href={resultCard.cardURL} target="_blank">{resultCard.success === true ? resultCard.cardURL : ""}</a>
                   <a className="button-share" href="#" target="_blank">
                     <i className="fa-solid fa-address-card"></i>
                     <span> Compartir en twitter</span>
