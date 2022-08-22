@@ -6,6 +6,7 @@ import '../styles/App.scss';
 import { useState } from 'react';
 import React from 'react';
 import PropTypes from 'prop-types';
+import Preview from './Preview';
 
 
 function App() {
@@ -51,19 +52,7 @@ const uploadImage = (ev) => {
     });
   }
 
-  const handleReset = (ev) => {
-    ev.preventDefault();
-    setDataCard({
-      palette: '1',
-      name: '',
-      job: '',
-      phone: '',
-      email: '',
-      linkedin: '',
-      github: '',
-      photo: photo
-    })
-  }
+  
   //Para los colapsables
   const handleCollapsed = (ev) => {
     
@@ -82,44 +71,7 @@ const uploadImage = (ev) => {
       <main className="main-profile">
 
 
-        <section className="preview">
-          <button className="reset-button js-resetBtn" onClick={handleReset}>
-            <i className="fa-regular fa-trash-can"></i>
-            Reset
-          </button>
-          <selection className="card">
-            <div className="rectangle">
-            </div>
-            <selection className="information ">
-              <p className="name js-preview-name">{dataCard.name || 'Nombre Apellido'}</p>
-              <p className="developer js-preview-job">{dataCard.job || 'Front-end developer'}</p>
-            </selection>
-
-            <img className="photo js-preview-photo" src={dataCard.photo} alt="profile" />
-            <ul className="icons">
-              <li>
-                <a className="icon-phone icon-border js-preview-phone card-links" title="Teléfono" href={'tel:' + dataCard.phone}>
-                  <i className="fa-solid fa-mobile-screen-button fa-xl"></i>
-                </a>
-              </li>
-              <li>
-                <a className="icon-email icon-border js-preview-email card-links" target="_blank" title="Email" href={'mailto:' + dataCard.email}>
-                  <i className="fa-solid fa-envelope fa-xl"></i>
-                </a>
-              </li>
-              <li>
-                <a className="icon-linkedin icon-border js-preview-link card-links" target="_blank" title="Linkedin">
-                  <i className="fa-brands fa-linkedin fa-xl"></i>
-                </a>
-              </li>
-              <li>
-                <a className="icon-github icon-border js-preview-github card-links" target="_blank" title="Github">
-                  <i className="fa-brands fa-github-alt fa-xl"></i>
-                </a>
-              </li>
-            </ul>
-          </selection>
-        </section>
+        <Preview dataCard={dataCard} setDataCard={setDataCard}/>
         <section className="design-profile">
           <form action="https://adalab-server-form.herokuapp.com" method="post" className="form js-allInputs">
             <fieldset className="design-section collapsablemenu" onClick={handleCollapsed}>
