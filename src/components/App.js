@@ -17,6 +17,8 @@ import '../styles/layout/share.scss';
 import Design from './Design';
 
 function App() {
+  
+  //Variables de estado
   const [dataCard, setDataCard] = useState(ls.get('data', {
     palette: '1',
     name: '',
@@ -29,6 +31,8 @@ function App() {
   }));
   const [resultCard, setResultCard] = useState({});
   
+
+  //Image
   if (dataCard.photo === '') {
     setDataCard({...dataCard,
       photo: photo});
@@ -51,12 +55,14 @@ const uploadImage = (ev) => {
   }
 };
 
+//Recoger el valor de los inputs
   const handleInput = (ev) => {
     const inputValue = ev.target.value;
     const inputName = ev.target.name;
     setDataCard({
       ...dataCard, [inputName]: inputValue
     });
+
   }
 
   // Crear tarjeta (API)
@@ -74,7 +80,7 @@ const uploadImage = (ev) => {
   }
 
   ls.set('data', dataCard);
-
+  
   return (
     <div>
       <Header />
@@ -83,7 +89,7 @@ const uploadImage = (ev) => {
       <main className="main-profile">
 
 
-        <Preview dataCard={dataCard} setDataCard={setDataCard}/>
+        <Preview dataCard={dataCard} setDataCard={setDataCard} />
 
         <section className="design-profile">
           <form action="https://adalab-server-form.herokuapp.com" method="post" className="form js-allInputs">

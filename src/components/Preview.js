@@ -1,5 +1,6 @@
 import photo from '../images/photo2.png';
 import '../styles/layout/preview.scss';
+import ls from '../services/localStoraged';
 
 function Preview (props) {
     
@@ -15,6 +16,7 @@ function Preview (props) {
           github: '',
           photo: photo
         })
+        ls.clear();
       }
 
     return (<section className="preview">
@@ -38,17 +40,17 @@ function Preview (props) {
           </a>
         </li>
         <li>
-          <a className="icon-email icon-border js-preview-email card-links" target="_blank" title="Email" href={'mailto:' + props.dataCard.email}>
+          <a className="icon-email icon-border js-preview-email card-links" target="_blank" title="Email" href={'mailto:' + props.dataCard.email} rel="noreferrer">
             <i className="fa-solid fa-envelope fa-xl"></i>
           </a>
         </li>
         <li>
-          <a className="icon-linkedin icon-border js-preview-link card-links" target="_blank" title="Linkedin">
+          <a className="icon-linkedin icon-border js-preview-link card-links" target="_blank" rel="noreferrer" title="Linkedin" href={props.dataCard.linkedin}>
             <i className="fa-brands fa-linkedin fa-xl"></i>
           </a>
         </li>
         <li>
-          <a className="icon-github icon-border js-preview-github card-links" target="_blank" title="Github">
+          <a className="icon-github icon-border js-preview-github card-links" target="_blank" title="Github" href={props.dataCard.github} rel="noreferrer">
             <i className="fa-brands fa-github-alt fa-xl"></i>
           </a>
         </li>
