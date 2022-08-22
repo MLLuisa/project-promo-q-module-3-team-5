@@ -14,6 +14,7 @@ import '../styles/layout/main-home.scss';
 import '../styles/layout/design.scss';
 import '../styles/layout/fill.scss';
 import '../styles/layout/share.scss';
+import Design from './Design';
 
 function App() {
   const [dataCard, setDataCard] = useState(ls.get('data', {
@@ -83,64 +84,12 @@ const uploadImage = (ev) => {
 
 
         <Preview dataCard={dataCard} setDataCard={setDataCard}/>
+
         <section className="design-profile">
           <form action="https://adalab-server-form.herokuapp.com" method="post" className="form js-allInputs">
-            <fieldset className="design-section collapsablemenu" onClick={handleCollapsed}>
-              <legend className="legend-design js-legend">
-                <i className="icon fa-regular fa-object-ungroup"></i>
-                <span className="fill">Diseña</span>
-                <img src={knife} className="skull" alt="" />
-              </legend>
-              <section className="design-colors section-to-hide">
-                <h3 className="design-subtitle">Colores</h3>
-                <div className="colors-options">
-                  <div className="option">
-                    <input
-                      checked={dataCard.palette === '1'}
-                      onChange={handleInput}
-                      type="radio" name="palette" value="1" className="color-palette-input1 js-palettes" id="1" title="viernes 13" />
-                    <div className="option" title="viernes 13">
-                      <div className="color1"></div>
-                      <div className="color2"></div>
-                      <div className="color3"></div>
-                    </div>
-                  </div>
-                  <div className="option">
-                    <input
-                      checked={dataCard.palette === '2'}
-                      onChange={handleInput}
-                      type="radio" name="palette" value="2" className="color-palette-input2 js-palettes" id="2" title="Elm Street" />
-                    <div className="option" title="Elm Street">
-                      <div className="color4"></div>
-                      <div className="color5"></div>
-                      <div className="color6"></div>
-                    </div>
-                  </div>
-                  <div className="option">
-                    <input
-                      checked={dataCard.palette === '3'}
-                      onChange={handleInput}
-                      type="radio" name="palette" value="3" className="color-palette-input3 js-palettes" id="3" title="the blair witch" />
-                    <div className="option" title="the blair witch">
-                      <div className="color7"></div>
-                      <div className="color8"></div>
-                      <div className="color9"></div>
-                    </div>
-                  </div>
-                  <div className="option">
-                    <input
-                      checked={dataCard.palette === '4'}
-                      onChange={handleInput}
-                      type="radio" name="palette" value="4" className="color-palette-input4 js-palettes" id="4" title="Freddy come to me" />
-                    <div className="option" title="Freddy come to me">
-                      <div className="color10"></div>
-                      <div className="color11"></div>
-                      <div className="color12"></div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-            </fieldset>
+            
+            <Design handleCollapsed={handleCollapsed} dataCard={dataCard} handleInput={handleInput} />
+
             <fieldset className="fill-section collapsablemenu" onClick={handleCollapsed}>
               <legend className="legend-fill js-legend">
                 <i className="fa-solid fa-xl fa-keyboard"></i>
