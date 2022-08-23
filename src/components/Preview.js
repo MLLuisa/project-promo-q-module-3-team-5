@@ -2,6 +2,8 @@ import photo from '../images/photo2.png';
 import '../styles/layout/preview.scss';
 import ls from '../services/localStoraged';
 import Profile from './Profile';
+import IconPreview from './IconPreview';
+import Button from './Button';
 
 
 
@@ -23,40 +25,27 @@ function Preview (props) {
       }
 
     return (<section className="preview">
-    <button className="reset-button js-resetBtn" onClick={handleReset}>
-      <i className="fa-regular fa-trash-can"></i>
-      Reset
-    </button>
-    <selection className="card">
+    
+    
+      <Button classContainer="" className="reset-button" icon="fa-regular fa-trash-can" text="Reset" name="resetButton" onClick={handleReset} />
+      
+      <selection className="card">
       <div className="rectangle">
       </div>
       <selection className="information ">
-        <p className="name js-preview-name">{props.dataCard.name || 'Nombre Apellido'}</p>
-        <p className="developer js-preview-job">{props.dataCard.job || 'Front-end developer'}</p>
+        <p className="name">{props.dataCard.name || 'Nombre Apellido'}</p>
+        <p className="developer">{props.dataCard.job || 'Front-end developer'}</p>
       </selection>
 
       <Profile avatar={props.dataCard.photo} />
       <ul className="icons">
-        <li>
-          <a className="icon-phone icon-border js-preview-phone card-links" title="Teléfono" href={'tel:' + props.dataCard.phone}>
-            <i className="fa-solid fa-mobile-screen-button fa-xl"></i>
-          </a>
-        </li>
-        <li>
-          <a className="icon-email icon-border js-preview-email card-links" target="_blank" title="Email" href={'mailto:' + props.dataCard.email} rel="noreferrer">
-            <i className="fa-solid fa-envelope fa-xl"></i>
-          </a>
-        </li>
-        <li>
-          <a className="icon-linkedin icon-border js-preview-link card-links" target="_blank" rel="noreferrer" title="Linkedin" href={props.dataCard.linkedin}>
-            <i className="fa-brands fa-linkedin fa-xl"></i>
-          </a>
-        </li>
-        <li>
-          <a className="icon-github icon-border js-preview-github card-links" target="_blank" title="Github" href={props.dataCard.github} rel="noreferrer">
-            <i className="fa-brands fa-github-alt fa-xl"></i>
-          </a>
-        </li>
+        <IconPreview title='Teléfono' href={'tel:' + props.dataCard.phone} className="phone" icon={"fa-solid fa-mobile-screen-button fa-xl"} />
+
+        <IconPreview title='Email' href={'mailto:' + props.dataCard.email} className="email" icon={"fa-solid fa-envelope fa-xl"} />
+
+        <IconPreview title='Linkedin' href={props.dataCard.linkedin} className="linkedin" icon={"fa-brands fa-linkedin fa-xl"} />
+
+        <IconPreview title='Github' href={props.dataCard.github} className="github" icon={"fa-brands fa-github-alt fa-xl"} />
       </ul>
     </selection>
   </section>);

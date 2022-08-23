@@ -16,6 +16,7 @@ import '../styles/layout/fill.scss';
 import '../styles/layout/share.scss';
 import Design from './Design';
 import Fill from './Fill';
+import Button from './Button';
 
 function App() {
   
@@ -86,13 +87,9 @@ function App() {
               </legend>
 
               <div className="container-collapsible section-to-hide ">
-                <div className="button-container">
-                  <button className="button-create" name="newCardButton" onClick={handleCreateCard}>
-                    <i className="fa-solid fa-address-card"></i>
-                    <span>crear tarjeta</span>
-                  </button>
-                </div>
-
+                
+              <Button classContainer="button-container" name="newCardButton" className="button-create" icon="fa-solid fa-address-card" text="crear tarjeta" onClick={handleCreateCard} />
+              
                 <div className="check">
                   <h3 className="share-text"></h3>
                 </div>
@@ -100,10 +97,11 @@ function App() {
                 <div className="created">
                   <h3 className="share-text">{resultCard.success === true ? "La tarjeta ha sido creada:" : "¡Rellena todo el formulario!"}</h3>
                   <a className="link" href={resultCard.cardURL} target="_blank">{resultCard.success === true ? resultCard.cardURL : ""}</a>
-                  <a className="button-share" href={`https://twitter.com/intent/tweet?text=Hello%20world%20my%20card&url=${resultCard.cardURL}`} target="_blank">
-                    <i className="fa-solid fa-address-card"></i>
-                    <span> Compartir en twitter</span>
-                  </a>
+                  
+                  <Button className="button-share" icon="fa-brands fa-twitter" text="Compartir en twitter" name="shareButton" target="_blank" href={`https://twitter.com/intent/tweet?text=Hello%20world%20my%20card&url=${resultCard.cardURL}`} />
+                  
+                  
+          
                 </div>
               </div>
             </fieldset>
