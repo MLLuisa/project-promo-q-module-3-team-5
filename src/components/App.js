@@ -34,32 +34,11 @@ function App() {
   
 
   //Image
-  if (dataCard.photo === '') {
-    setDataCard({...dataCard,
-      photo: photo});
-  };
- 
-const fr = new FileReader();
-const myFileField = React.createRef();
-
-const getImage = () => {
-  setDataCard({...dataCard,
-    photo: fr.result});
-
-};
-
-const uploadImage = (ev) => {
-  if (ev.currentTarget.files.length > 0) {
-    const myFile = ev.currentTarget.files[0];
-    fr.addEventListener('load', getImage);
-    fr.readAsDataURL(myFile);
-  }
-};
+  
 
 //Recoger el valor de los inputs
-  const handleInput = (ev) => {
-    const inputValue = ev.target.value;
-    const inputName = ev.target.name;
+  const handleInput = (inputName, inputValue) => {
+    
     setDataCard({
       ...dataCard, [inputName]: inputValue
     });
@@ -90,14 +69,14 @@ const uploadImage = (ev) => {
       <main className="main-profile">
 
 
-        <Preview dataCard={dataCard} />
+        <Preview dataCard={dataCard} setDataCard={setDataCard} />
 
         <section className="design-profile">
           <form action="https://adalab-server-form.herokuapp.com" method="post" className="form js-allInputs">
             
             <Design handleCollapsed={handleCollapsed} dataCard={dataCard} handleInput={handleInput} />
 
-            <Fill handleCollapsed={handleCollapsed} dataCard={dataCard} handleInput={handleInput} setDataCard={setDataCard}/>
+            <Fill handleCollapsed={handleCollapsed} dataCard={dataCard} handleInput={handleInput} />
 
             <fieldset className="share-section collapsablemenu" onClick={handleCollapsed}>
               <legend className="legend-share js-legend">

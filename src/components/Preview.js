@@ -1,6 +1,9 @@
 import photo from '../images/photo2.png';
 import '../styles/layout/preview.scss';
 import ls from '../services/localStoraged';
+import Profile from './Profile';
+
+
 
 function Preview (props) {
     
@@ -32,7 +35,7 @@ function Preview (props) {
         <p className="developer js-preview-job">{props.dataCard.job || 'Front-end developer'}</p>
       </selection>
 
-      <img className="photo js-preview-photo" src={props.dataCard.photo} alt="profile" />
+      <Profile avatar={props.dataCard.photo} />
       <ul className="icons">
         <li>
           <a className="icon-phone icon-border js-preview-phone card-links" title="Teléfono" href={'tel:' + props.dataCard.phone}>
