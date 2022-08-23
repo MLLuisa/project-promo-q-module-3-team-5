@@ -1,6 +1,6 @@
 import photo from '../images/photo2.png';
-import knife from '../images/knife.png';
 import { useState } from 'react';
+import knife from '../images/knife.png';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Preview from './Preview';
@@ -15,6 +15,7 @@ import '../styles/layout/design.scss';
 import '../styles/layout/fill.scss';
 import '../styles/layout/share.scss';
 import Design from './Design';
+import Fill from './Fill';
 
 function App() {
   
@@ -96,60 +97,7 @@ const uploadImage = (ev) => {
             
             <Design handleCollapsed={handleCollapsed} dataCard={dataCard} handleInput={handleInput} />
 
-            <fieldset className="fill-section collapsablemenu" onClick={handleCollapsed}>
-              <legend className="legend-fill js-legend">
-                <i className="fa-solid fa-xl fa-keyboard"></i>
-                <span className="fill">rellena</span>
-                <img src={knife} className="skull" alt="" />
-              </legend>
-
-              <div className="fill-inputs-section section-to-hide">
-                <label htmlFor="name" className="text-fill">nombre completo</label>
-                <input type="text" name="name"
-                  value={dataCard.name}
-                  onChange={handleInput}
-                  placeholder="Ej: Ada Lovelace" className="js-name-input" required="" />
-
-                <label htmlFor="jobpsition" className="text-fill">puesto</label>
-                <input type="text" name="job" placeholder="Ej: Front-End developer" className="js-job-input"
-                  value={dataCard.job}
-                  onChange={handleInput}
-                  required="" />
-
-                <div className="div-text-fill">
-                  <div>
-                    <p className="profile">imagen de perfil</p>
-                    <label className="text-fill image_button" htmlFor="image">añadir imagen</label>
-                    <input type="file" name="photo"
-                      ref={myFileField}
-                      onChange={uploadImage}
-                      id="image" className="image__hiddenField js__profile-upload-btn js-img-input" required="" />
-                  </div>
-                  <div className="profile__preview js__profile-image" style={{ backgroundImage: `url(${dataCard.photo})` }}></div>
-                </div>
-
-                <label htmlFor="email" className="text-fill">email</label>
-                <input type="text" name="email"
-                  value={dataCard.email}
-                  onChange={handleInput} placeholder="Ej: adalab@adalab" required="" className="js-email-input" />
-
-                <label htmlFor="phone" className="text-fill js-preview-phone">teléfono</label>
-                <input type="phone" name="phone"
-                  value={dataCard.phone}
-                  onChange={handleInput}
-                  placeholder="Ej: 789 653 214" className="js-phone-input" />
-
-                <label htmlFor="linkedin" className="text-fill">linkedin</label>
-                <input type="text" name="linkedin"
-                  value={dataCard.linkedin}
-                  onChange={handleInput} placeholder="Ej: https://www.linkedin.com/school/adalab/" className="js-link-input" required="" />
-                <label htmlFor="github" className="text-fill">github</label>
-                <input type="text" name="github"
-                  value={dataCard.github}
-                  onChange={handleInput} className="js-git-input" placeholder="Ej: @Adalab"
-                  required="" />
-              </div>
-            </fieldset>
+            <Fill handleCollapsed={handleCollapsed} dataCard={dataCard} handleInput={handleInput} setDataCard={setDataCard}/>
 
             <fieldset className="share-section collapsablemenu" onClick={handleCollapsed}>
               <legend className="legend-share js-legend">
