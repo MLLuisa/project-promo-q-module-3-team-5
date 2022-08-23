@@ -89,7 +89,7 @@ const uploadImage = (ev) => {
       <main className="main-profile">
 
 
-        <Preview dataCard={dataCard} setDataCard={setDataCard} />
+        <Preview dataCard={dataCard} />
 
         <section className="design-profile">
           <form action="https://adalab-server-form.herokuapp.com" method="post" className="form js-allInputs">
@@ -173,7 +173,7 @@ const uploadImage = (ev) => {
                 <div className="created">
                   <h3 className="share-text">{resultCard.success === true ? "La tarjeta ha sido creada:" : "¡Rellena todo el formulario!"}</h3>
                   <a className="link" href={resultCard.cardURL} target="_blank">{resultCard.success === true ? resultCard.cardURL : ""}</a>
-                  <a className="button-share" href={`https://twitter.com/intent/tweet?text=Hello%20world%20mi%20tarjeta&url=${resultCard.cardURL}`} target="_blank">
+                  <a className="button-share" href={`https://twitter.com/intent/tweet?text=Hello%20world%20my%20card&url=${resultCard.cardURL}`} target="_blank">
                     <i className="fa-solid fa-address-card"></i>
                     <span> Compartir en twitter</span>
                   </a>
