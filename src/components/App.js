@@ -3,11 +3,10 @@ import { useState } from 'react';
 import knife from '../images/knife.png';
 import React from 'react';
 import PropTypes from 'prop-types';
-import Preview from './Preview';
+
 import dataApi from '../services/dataApi';
 import ls from '../services/localStoraged';
-import Header from './Header';
-import Footer from './Footer';
+
 import '../styles/core/Reset.scss';
 import '../styles/layout/main-profile.scss';
 import '../styles/layout/main-home.scss';
@@ -17,6 +16,9 @@ import '../styles/layout/share.scss';
 import Design from './Design';
 import Fill from './Fill';
 import Button from './Button';
+
+import Share from './Share';
+import Card from './Card';
 
 function App() {
   
@@ -38,21 +40,22 @@ function App() {
   
 
 //Recoger el valor de los inputs
-  const handleInput = (inputName, inputValue) => {
+const handleInput = (inputName, inputValue) => {
     
-    setDataCard({
-      ...dataCard, [inputName]: inputValue
-    });
+  setDataCard({
+    ...dataCard, [inputName]: inputValue
+  });
 
-  }
+}
+
 
   // Crear tarjeta (API)
-  const handleCreateCard = (ev) => {
-    ev.preventDefault();
+  const handleCreateCard = () => {
     dataApi(dataCard).then(info => {
       setResultCard(info);
     })
   }
+
   
   //Para los colapsables
   const handleCollapsed = (ev) => {
@@ -64,53 +67,9 @@ function App() {
   
   return (
     <div>
-      <Header />
-
-
-      <main className="main-profile">
-
-
-        <Preview dataCard={dataCard} setDataCard={setDataCard} />
-
-        <section className="design-profile">
-          <form action="https://adalab-server-form.herokuapp.com" method="post" className="form js-allInputs">
-            
-            <Design handleCollapsed={handleCollapsed} dataCard={dataCard} handleInput={handleInput} />
-
-            <Fill handleCollapsed={handleCollapsed} dataCard={dataCard} handleInput={handleInput} />
-
-            <fieldset className="share-section collapsablemenu" onClick={handleCollapsed}>
-              <legend className="legend-share js-legend">
-                <i className="icon fa-solid fa-share-nodes fa-xl"></i>
-                <p className="share">comparte</p>
-                <img src={knife} className="skull" alt="" />
-              </legend>
-
-              <div className="container-collapsible section-to-hide ">
-                
-              <Button classContainer="button-container" name="newCardButton" className="button-create" icon="fa-solid fa-address-card" text="crear tarjeta" onClick={handleCreateCard} />
-              
-                <div className="check">
-                  <h3 className="share-text"></h3>
-                </div>
-
-                <div className="created">
-                  <h3 className="share-text">{resultCard.success === true ? "La tarjeta ha sido creada:" : "¡Rellena todo el formulario!"}</h3>
-                  <a className="link" href={resultCard.cardURL} target="_blank">{resultCard.success === true ? resultCard.cardURL : ""}</a>
-                  
-                  <Button className="button-share" icon="fa-brands fa-twitter" text="Compartir en twitter" name="shareButton" target="_blank" href={`https://twitter.com/intent/tweet?text=Hello%20world%20my%20card&url=${resultCard.cardURL}`} />
-                  
-                  
-          
-                </div>
-              </div>
-            </fieldset>
-
-          </form>
-
-        </section>
-      </main>
-      <Footer />
+      
+      <Card handleCollapsed={handleCollapsed} dataCard={dataCard} setDataCard={setDataCard} resultCard={resultCard} setResultCard={setResultCard} handleInput={handleInput} handleCreateCard={handleCreateCard} />
+      
     </div>
   );
 }
