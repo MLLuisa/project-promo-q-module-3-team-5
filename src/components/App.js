@@ -37,6 +37,7 @@ function App() {
     })
   );
   const [resultCard, setResultCard] = useState({});
+  const [collapsed, setCollapsed] = useState(['', 'collapsed', 'collapsed']);
 
   //Image
 
@@ -56,8 +57,17 @@ function App() {
   };
 
   //Para los colapsables
-  const handleCollapsed = (ev) => {
-    console.log(ev.currentTarget);
+
+  const handleCollapsed = (value) => {
+    if (value === 'design') {
+      setCollapsed(['', 'collapsed', 'collapsed']);
+    }
+    if (value === 'fill') {
+      setCollapsed(['collapsed', '', 'collapsed']);
+    }
+    if (value === 'share') {
+      setCollapsed(['collapsed', 'collapsed', '']);
+    }
   };
 
   ls.set('data', dataCard);
@@ -77,6 +87,7 @@ function App() {
               setResultCard={setResultCard}
               handleInput={handleInput}
               handleCreateCard={handleCreateCard}
+              collapsed={collapsed}
             />
           }
         />
