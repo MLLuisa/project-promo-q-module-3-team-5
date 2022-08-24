@@ -1,7 +1,9 @@
-import Form from './Form';
-import Preview from './Preview';
-import Header from './Header';
-import Footer from './Footer';
+import Header from "../Header";
+import Preview from "./Preview";
+import Form from "./Form/Form";
+import Footer from "../Footer";
+import '../../styles/layout/main-profile.scss';
+
 
 function Card(props) {
   return (

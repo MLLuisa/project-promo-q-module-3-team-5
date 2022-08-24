@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import photo from '../images/photo2.png';
+import photo from '../../../images/photo2.png';
 
 function Profile(props) {
   

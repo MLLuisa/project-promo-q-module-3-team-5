@@ -1,25 +1,10 @@
-import photo from '../images/photo2.png';
 import { useState } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
-import knife from '../images/knife.png';
+import { Route, Routes } from 'react-router-dom';
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import dataApi from '../services/dataApi';
 import ls from '../services/localStoraged';
-
 import '../styles/core/Reset.scss';
-import '../styles/layout/main-profile.scss';
-import '../styles/layout/main-home.scss';
-import '../styles/layout/design.scss';
-import '../styles/layout/fill.scss';
-import '../styles/layout/share.scss';
-import Design from './Design';
-import Fill from './Fill';
-import Button from './Button';
-
-import Share from './Share';
-import Card from './Card';
+import Card from './Card/Card';
 import Landing from './Landing';
 
 function App() {
@@ -47,6 +32,7 @@ function App() {
       ...dataCard,
       [inputName]: inputValue,
     });
+    console.log(inputName, inputValue)
   };
 
   // Crear tarjeta (API)

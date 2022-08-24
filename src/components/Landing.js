@@ -1,6 +1,7 @@
 import Header from './Header';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
+import '../styles/layout/main-home.scss';
 
 function Landing() {
   return (
@@ -28,12 +29,12 @@ function Landing() {
         </ul>
 
         <div className="farmeContainer">
-          {/* <iframe
+           <iframe
             src="https://my.spline.design/untitled-64ca818ba17b16e5a2a0b7e3d075d5d3/"
             frameborder="0"
             width="100%"
             height="100%"
-          ></iframe> */}
+          ></iframe> 
         </div>
 
         <Link

@@ -1,6 +1,6 @@
-import Button from './Button';
-import knife from '../images/knife.png';
-import Collapsable from './Collapsable';
+import Button from '../Basic/Button';
+import Collapsable from '../Basic/Collapsable';
+import '../../../styles/layout/share.scss';
 
 function Share(props) {
   const handleCreateCard = (ev) => {
@@ -43,15 +43,11 @@ function Share(props) {
           <a className="link" href={props.resultCard.cardURL} target="_blank">
             {props.resultCard.success === true ? props.resultCard.cardURL : ''}
           </a>
-
-          <Button
-            className="button-share"
-            icon="fa-brands fa-twitter"
-            text="Compartir en twitter"
-            name="shareButton"
-            target="_blank"
-            href={`https://twitter.com/intent/tweet?text=Hello%20world%20my%20card&url=${props.resultCard.cardURL}`}
-          />
+          <a className="button-share" href="#" target="_blank">
+        <i className="fa-brands fa-twitter"></i>
+        <span> Compartir en twitter</span>
+      </a>
+          
         </div>
       </div>
     </fieldset>

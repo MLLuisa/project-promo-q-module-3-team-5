@@ -1,9 +1,9 @@
-import photo from '../images/photo2.png';
-import '../styles/layout/preview.scss';
-import ls from '../services/localStoraged';
-import Profile from './Profile';
-import IconPreview from './IconPreview';
-import Button from './Button';
+import photo from '../../images/photo2.png';
+import '../../styles/layout/preview.scss';
+import ls from '../../services/localStoraged';
+import Profile from './Image/Profile';
+import IconPreview from './Basic/IconPreview';
+import Button from './Basic/Button';
 
 
 

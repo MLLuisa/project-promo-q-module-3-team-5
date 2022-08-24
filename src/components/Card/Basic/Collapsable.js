@@ -1,4 +1,4 @@
-import knife from '../images/knife.png';
+import knife from '../../../images/knife.png'
 
 function Collapsable(props) {
   const handleCollapsed = (ev) => {
