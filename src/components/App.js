@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import React from 'react';
 import dataApi from '../services/dataApi';
@@ -11,7 +11,7 @@ function App() {
   //Variables de estado
   const [dataCard, setDataCard] = useState(
     ls.get('data', {
-      palette: '1',
+      palette: 1,
       name: '',
       job: '',
       phone: '',
@@ -23,6 +23,8 @@ function App() {
   );
   const [resultCard, setResultCard] = useState({});
   const [collapsed, setCollapsed] = useState(['', 'collapsed', 'collapsed']);
+  const [rotate, setRotate] = useState(['', '', '']);
+  const [palette, setPalette] = useState(1);
 
   //Image
 
@@ -42,17 +44,24 @@ function App() {
     });
   };
 
+  const handlePalette = (value) => {
+    setPalette(value);
+  }
+
   //Para los colapsables
 
   const handleCollapsed = (value) => {
     if (value === 'design') {
       setCollapsed(['', 'collapsed', 'collapsed']);
+      setRotate(['rotate', '', '']);
     }
     if (value === 'fill') {
       setCollapsed(['collapsed', '', 'collapsed']);
+      setRotate(['', 'rotate', '']);
     }
     if (value === 'share') {
       setCollapsed(['collapsed', 'collapsed', '']);
+      setRotate(['', '', 'rotate']);
     }
   };
 
@@ -74,6 +83,9 @@ function App() {
               handleInput={handleInput}
               handleCreateCard={handleCreateCard}
               collapsed={collapsed}
+              palette={palette}
+              handlePalette={handlePalette}
+              rotate={rotate}
             />
           }
         />

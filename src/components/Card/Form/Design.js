@@ -6,9 +6,10 @@ function Design(props) {
   
  
   const handleInputPalette = (ev) => {
-    const inputValue = ev.target.value;
+    const inputValue = parseInt(ev.target.value);
     const inputName = ev.target.name;
     props.handleInput(inputName, inputValue);
+    props.handlePalette(inputValue);
     
   }
 
@@ -21,6 +22,8 @@ function Design(props) {
         classSpan="fill"
         text="Diseña"
         handleCollapsed={props.handleCollapsed}
+        rotate={props.rotate}
+        index={0}
       />
       <section
         className={`design-colors section-to-hide ${props.collapsed[0]}`}

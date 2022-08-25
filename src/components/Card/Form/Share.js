@@ -16,6 +16,9 @@ function Share(props) {
         classSpan="fill"
         text="Comparte"
         handleCollapsed={props.handleCollapsed}
+        rotate={props.rotate}
+        setRotate={props.setRotate}
+        index={2}
       />
 
       <div

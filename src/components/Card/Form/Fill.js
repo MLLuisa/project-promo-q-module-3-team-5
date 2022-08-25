@@ -21,6 +21,9 @@ function Fill(props) {
         classSpan="fill"
         text="Rellena"
         handleCollapsed={props.handleCollapsed}
+        rotate={props.rotate}
+        setRotate={props.setRotate}
+        index={1}
       />
 
       <div

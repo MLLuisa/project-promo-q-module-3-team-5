@@ -12,7 +12,7 @@ function Preview (props) {
     const handleReset = (ev) => {
         ev.preventDefault();
         props.setDataCard({
-          palette: '1',
+          palette: 1,
           name: '',
           job: '',
           phone: '',
@@ -29,7 +29,7 @@ function Preview (props) {
     
       <Button classContainer="" className="reset-button" icon="fa-regular fa-trash-can" text="Reset" name="resetButton" onClick={handleReset} />
       
-      <selection className="card">
+      <selection className={"card palette" + props.palette}>
       <div className="rectangle">
       </div>
       <selection className="information ">

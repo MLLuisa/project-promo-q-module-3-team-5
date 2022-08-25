@@ -8,13 +8,16 @@ function Form(props) {
       <form
         action="https://adalab-server-form.herokuapp.com"
         method="post"
-        className="form js-allInputs"
+        className="form"
       >
         <Design
           handleCollapsed={props.handleCollapsed}
           dataCard={props.dataCard}
           handleInput={props.handleInput}
           collapsed={props.collapsed}
+          handlePalette={props.handlePalette}
+          rotate={props.rotate}
+          
         />
 
         <Fill
@@ -22,6 +25,8 @@ function Form(props) {
           dataCard={props.dataCard}
           handleInput={props.handleInput}
           collapsed={props.collapsed}
+          rotate={props.rotate}
+          
         />
 
         <Share
@@ -31,6 +36,8 @@ function Form(props) {
           setResultCard={props.setResultCard}
           handleCreateCard={props.handleCreateCard}
           collapsed={props.collapsed}
+          rotate={props.rotate}
+          
         />
       </form>
     </section>
