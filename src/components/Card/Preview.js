@@ -21,6 +21,7 @@ function Preview (props) {
           github: '',
           photo: photo
         })
+        props.handlePalette(1);
         ls.clear();
       }
 

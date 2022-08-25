@@ -21,6 +21,7 @@
     align-items: baseline;
     gap: 15px;
     color: $main_text_color;
+    cursor: pointer;
     @media all and (min-width: 768px) {
       padding: 0 20px;
     }
@@ -68,6 +69,11 @@
     padding: 5px;
     display: inline-flex;
   }
+
+  .color-palette-input1, .color-palette-input2, .color-palette-input3, .color-palette-input4 {
+    cursor: pointer;
+  }
+
   
   @mixin color-square($color) {
     background-color: $color;

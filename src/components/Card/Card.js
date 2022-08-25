@@ -11,7 +11,7 @@ function Card(props) {
       <Header />
 
       <main className="main-profile">
-        <Preview dataCard={props.dataCard} setDataCard={props.setDataCard} palette={props.palette} />
+        <Preview dataCard={props.dataCard} setDataCard={props.setDataCard} palette={props.palette} handlePalette={props.handlePalette} />
         <Form
           handleCollapsed={props.handleCollapsed}
           dataCard={props.dataCard}

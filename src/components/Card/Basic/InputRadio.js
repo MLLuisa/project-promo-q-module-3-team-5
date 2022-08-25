@@ -2,7 +2,7 @@ function InputRadio (props) {
     return (
         <div className="option">
            <input
-            checked={props.dataCard.palette === props.value}
+            checked={props.checked}
               onChange={props.handleInput}
               type={props.type}
               name={props.name}
