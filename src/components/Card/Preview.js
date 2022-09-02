@@ -1,4 +1,4 @@
-import photo from '../../images/photo2.png';
+// import photo from '../../images/photo2.png';
 import '../../styles/layout/preview.scss';
 import ls from '../../services/localStoraged';
 import Profile from './Image/Profile';
@@ -19,11 +19,19 @@ function Preview (props) {
           email: '',
           linkedin: '',
           github: '',
-          photo: photo
+          photo: '',
         })
         props.handlePalette(1);
         ls.clear();
       }
+
+      const dataPhone = () => {
+        if(!(/^\d{10}$/.test(props.dataCard.phone))){
+          return (`tel:${props.dataCard.phone}`);
+        } else {
+          return alert('Introduce un teléfono correcto');
+        }
+      };
 
     return (<section className="preview">
     
@@ -40,7 +48,7 @@ function Preview (props) {
 
       <Profile avatar={props.dataCard.photo} />
       <ul className="icons">
-        <IconPreview title='Teléfono' href={'tel:' + props.dataCard.phone} className="phone" icon={"fa-solid fa-mobile-screen-button fa-xl"} />
+        <IconPreview title='Teléfono' href={dataPhone()} className="phone" icon={"fa-solid fa-mobile-screen-button fa-xl"} />
 
         <IconPreview title='Email' href={'mailto:' + props.dataCard.email} className="email" icon={"fa-solid fa-envelope fa-xl"} />
 
