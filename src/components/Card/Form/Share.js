@@ -41,7 +41,7 @@ function Share(props) {
           <h3 className="share-text">
             {props.resultCard.success === true
               ? 'La tarjeta ha sido creada:'
-              : '¡Rellena todo el formulario!'}
+              : props.resultCard.error}
           </h3>
           <a className="link" href={props.resultCard.cardURL} target="_blank">
             {props.resultCard.success === true ? props.resultCard.cardURL : ''}
